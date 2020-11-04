@@ -1,0 +1,792 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_INFLUXDB",
+      "label": "InfluxDB",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "influxdb",
+      "pluginName": "InfluxDB"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "7.2.1"
+    },
+    {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "influxdb",
+      "name": "InfluxDB",
+      "version": "1.0.0"
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": null,
+  "iteration": 1604393287282,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "datasource": "${DS_INFLUXDB}",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 15,
+      "panels": [],
+      "title": "Trendline based on various jenkins build",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${DS_INFLUXDB}",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null,
+            "filterable": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 2,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "hiddenSeries": false,
+      "id": 13,
+      "interval": null,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": true,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.2.1",
+      "pointradius": 1,
+      "points": true,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "v",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "111",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "jmeter",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "select percentile(\"duration\",90) FROM (select value as \"duration\" from demodb where metric='pct90' AND page=~ /^$page$/ AND project='demoProject' AND status='ok' AND suite='superSuite' AND build='111')",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "90"
+                ],
+                "type": "percentile"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "project",
+              "operator": "=~",
+              "value": "/^$project$/"
+            },
+            {
+              "condition": "AND",
+              "key": "suite",
+              "operator": "=~",
+              "value": "/^$suite$/"
+            },
+            {
+              "condition": "AND",
+              "key": "build",
+              "operator": "=",
+              "value": "121"
+            },
+            {
+              "condition": "AND",
+              "key": "page",
+              "operator": "=~",
+              "value": "/^$page$/"
+            },
+            {
+              "condition": "AND",
+              "key": "metric",
+              "operator": "=",
+              "value": "pct90"
+            }
+          ]
+        },
+        {
+          "alias": "112",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "jmeter",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "select percentile(\"duration\",90) FROM (select value as \"duration\" from demodb where metric='pct90' AND page=~ /^$page$/ AND project='demoProject' AND status='ok' AND suite='superSuite' AND build='112')",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "90"
+                ],
+                "type": "percentile"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "project",
+              "operator": "=~",
+              "value": "/^$project$/"
+            },
+            {
+              "condition": "AND",
+              "key": "suite",
+              "operator": "=~",
+              "value": "/^$suite$/"
+            },
+            {
+              "condition": "AND",
+              "key": "build",
+              "operator": "=",
+              "value": "121"
+            },
+            {
+              "condition": "AND",
+              "key": "page",
+              "operator": "=~",
+              "value": "/^$page$/"
+            },
+            {
+              "condition": "AND",
+              "key": "metric",
+              "operator": "=",
+              "value": "pct90"
+            }
+          ]
+        },
+        {
+          "alias": "113",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "jmeter",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "select percentile(\"duration\",90) FROM (select value as \"duration\" from demodb where metric='pct90' AND page=~ /^$page$/ AND project='demoProject' AND status='ok' AND suite='superSuite' AND build='113')",
+          "rawQuery": true,
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "90"
+                ],
+                "type": "percentile"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "project",
+              "operator": "=~",
+              "value": "/^$project$/"
+            },
+            {
+              "condition": "AND",
+              "key": "suite",
+              "operator": "=~",
+              "value": "/^$suite$/"
+            },
+            {
+              "condition": "AND",
+              "key": "build",
+              "operator": "=",
+              "value": "121"
+            },
+            {
+              "condition": "AND",
+              "key": "page",
+              "operator": "=~",
+              "value": "/^$page$/"
+            },
+            {
+              "condition": "AND",
+              "key": "metric",
+              "operator": "=",
+              "value": "pct90"
+            }
+          ]
+        },
+        {
+          "alias": "114",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "jmeter",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "select percentile(\"duration\",90) FROM (select value as \"duration\" from demodb where metric='pct90' AND page=~ /^$page$/ AND project='demoProject' AND status='ok' AND suite='superSuite' AND build='114')",
+          "rawQuery": true,
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "90"
+                ],
+                "type": "percentile"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "project",
+              "operator": "=~",
+              "value": "/^$project$/"
+            },
+            {
+              "condition": "AND",
+              "key": "suite",
+              "operator": "=~",
+              "value": "/^$suite$/"
+            },
+            {
+              "condition": "AND",
+              "key": "build",
+              "operator": "=",
+              "value": "121"
+            },
+            {
+              "condition": "AND",
+              "key": "page",
+              "operator": "=~",
+              "value": "/^$page$/"
+            },
+            {
+              "condition": "AND",
+              "key": "metric",
+              "operator": "=",
+              "value": "pct90"
+            }
+          ]
+        },
+        {
+          "alias": "115",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "jmeter",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "select percentile(\"duration\",90) FROM (select value as \"duration\" from demodb where metric='pct90' AND page=~ /^$page$/ AND project='demoProject' AND status='ok' AND suite='superSuite' AND build='115')",
+          "rawQuery": true,
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "90"
+                ],
+                "type": "percentile"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "project",
+              "operator": "=~",
+              "value": "/^$project$/"
+            },
+            {
+              "condition": "AND",
+              "key": "suite",
+              "operator": "=~",
+              "value": "/^$suite$/"
+            },
+            {
+              "condition": "AND",
+              "key": "build",
+              "operator": "=",
+              "value": "121"
+            },
+            {
+              "condition": "AND",
+              "key": "page",
+              "operator": "=~",
+              "value": "/^$page$/"
+            },
+            {
+              "condition": "AND",
+              "key": "metric",
+              "operator": "=",
+              "value": "pct90"
+            }
+          ]
+        },
+        {
+          "alias": "116",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "jmeter",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "select percentile(\"duration\",90) FROM (select value as \"duration\" from demodb where metric='pct90' AND page=~ /^$page$/ AND project='demoProject' AND status='ok' AND suite='superSuite' AND build='116')",
+          "rawQuery": true,
+          "refId": "F",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "90"
+                ],
+                "type": "percentile"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "project",
+              "operator": "=~",
+              "value": "/^$project$/"
+            },
+            {
+              "condition": "AND",
+              "key": "suite",
+              "operator": "=~",
+              "value": "/^$suite$/"
+            },
+            {
+              "condition": "AND",
+              "key": "build",
+              "operator": "=",
+              "value": "121"
+            },
+            {
+              "condition": "AND",
+              "key": "page",
+              "operator": "=~",
+              "value": "/^$page$/"
+            },
+            {
+              "condition": "AND",
+              "key": "metric",
+              "operator": "=",
+              "value": "pct90"
+            }
+          ]
+        },
+        {
+          "alias": "117",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "jmeter",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "select percentile(\"duration\",90) FROM (select value as \"duration\" from demodb where metric='pct90' AND page=~ /^$page$/ AND project='demoProject' AND status='ok' AND suite='superSuite' AND build='117')",
+          "rawQuery": true,
+          "refId": "G",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "90"
+                ],
+                "type": "percentile"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "project",
+              "operator": "=~",
+              "value": "/^$project$/"
+            },
+            {
+              "condition": "AND",
+              "key": "suite",
+              "operator": "=~",
+              "value": "/^$suite$/"
+            },
+            {
+              "condition": "AND",
+              "key": "build",
+              "operator": "=",
+              "value": "121"
+            },
+            {
+              "condition": "AND",
+              "key": "page",
+              "operator": "=~",
+              "value": "/^$page$/"
+            },
+            {
+              "condition": "AND",
+              "key": "metric",
+              "operator": "=",
+              "value": "pct90"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Response Time Trendline for $page",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "series",
+        "name": null,
+        "show": true,
+        "values": [
+          "total"
+        ]
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:4886",
+          "format": "ms",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:4887",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 26,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "${DS_INFLUXDB}",
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "label": "project",
+        "multi": false,
+        "name": "project",
+        "options": [],
+        "query": "SHOW TAG VALUES FROM \"demodb\" WITH KEY=\"project\"",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "${DS_INFLUXDB}",
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "label": "suite",
+        "multi": false,
+        "name": "suite",
+        "options": [],
+        "query": "SHOW TAG VALUES FROM \"demodb\" WITH KEY=\"suite\"",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "${DS_INFLUXDB}",
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "label": "build",
+        "multi": true,
+        "name": "build",
+        "options": [],
+        "query": "SHOW TAG VALUES FROM \"demodb\" WITH KEY=\"build\"",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "${DS_INFLUXDB}",
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "label": "page",
+        "multi": false,
+        "name": "page",
+        "options": [],
+        "query": "SHOW TAG VALUES FROM \"demodb\" WITH KEY=\"page\"",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Demo_Trend",
+  "uid": "4pUY7DhGz",
+  "version": 35
+}
