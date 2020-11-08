@@ -1,3 +1,0 @@
-testcaseid,description,keywords,remarks
-TC001,Signup to bikroy application,navigateToApp;changeLanguage;navigateToLogin;chooseLoginOptions;signUpUsingEmail;signUp,
-TC002,Logut from the application,navigateToDashboard;navigateToSettings;logout;verifyLogout,
