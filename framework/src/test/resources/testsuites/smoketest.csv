@@ -1,7 +1,0 @@
-testcaseid,description,keywords,remarks
-tc01,create reservation,LoginApp;CreateReservation,
-tc02,ttach flight,LoginApp;CreateReservation;AddPNR,
-tc03,create cart,LoginApp;CreateReservation;AddPNR;CreateCart,
-tc04,get Cart,LoginApp;CreateReservation;AddPNR;CreateCart;getReservation;getCart,
-tc05,Create Order,LoginApp;CreateReservation;AddPNR;CreateCart;getReservation;getCart;post_Details;Create_Orders,
-tc06,FulfilOrder,LoginApp;CreateReservation;AddPNR;CreateCart;getReservation;getCart;post_Details;Create_Orders;Process_Order;Fulfilment,
