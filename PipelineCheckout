@@ -11,7 +11,7 @@ pipeline{
 		stage("Performance Test"){
 		steps{
 			dir('framework'){
-			echo '***Starting jmeter test'
+			echo '***Starting jmeter test ${params.UserCount}'
 			//bat 'jmeter -n -t jmeter_testplan_jenkins.jmx -JuserCount=10 -Jrampup=2 -Jduration=60 -Jkeywordss=LoginApp;CreateReservation;AddPNR -l testlog.csv'
 			bat 'jmeter -n -t jmeter_testplan_jenkins.jmx -JuserCount=${params.UserCount} -Jrampup=2 -Jduration=60 -Jkeywordss=LoginApp;CreateReservation;AddPNR -l testlog.csv'
 			echo '***jmeter test completed'
