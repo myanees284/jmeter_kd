@@ -15,7 +15,7 @@ pipeline{
 			//echo '***Starting jmeter test ${params.UserCount}'
 			echo "Pulling changes from the branch ${params.usercount}"
 			//bat 'jmeter -n -t jmeter_testplan_jenkins.jmx -JuserCount=10 -Jrampup=2 -Jduration=60 -Jkeywordss=LoginApp;CreateReservation;AddPNR -l testlog.csv'
-			bat 'jmeter -n -t jmeter_testplan_jenkins.jmx -JuserCount=${params.UserCount} -Jrampup=2 -Jduration=60 -Jkeywordss=LoginApp;CreateReservation;AddPNR -l testlog.csv'
+			bat 'jmeter -n -t jmeter_testplan_jenkins.jmx -JuserCount=${params.usercount} -Jrampup=2 -Jduration=60 -Jkeywordss=LoginApp;CreateReservation;AddPNR -l testlog.csv'
 			echo '***jmeter test completed'
 			}
 		}
