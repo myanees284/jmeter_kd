@@ -14,6 +14,7 @@ This is a simple JMeter framework mainly constructed with:
         - Grafana_Trend.json - gives response time trend level information of multiple builds for a given transaction<br>
         <img width="600" alt="grafana_trend" src="https://user-images.githubusercontent.com/44027805/98113058-8b055700-1ebc-11eb-88cc-90282f2251b9.PNG">
         
-  This can be 
-  1) easily integrated with Jenkins and can be deployed into CI/CD pipeline.(activity in progress)
+  This has been can be 
+  1) integrated with Jenkins and can be deployed into CI/CD pipeline.(see PipelineCheckout file)
+  
   2) easily executed with jmeter docker image and can be executed
