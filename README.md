@@ -16,5 +16,4 @@ This is a simple JMeter framework mainly constructed with:
         
   This has been can be 
   1) integrated with Jenkins and can be deployed into CI/CD pipeline.(see PipelineCheckout file)
-  
-  2) easily executed with jmeter docker image and can be executed
+    <img width="609" alt="github_pipeline" src="https://user-images.githubusercontent.com/44027805/99195945-71102200-27a2-11eb-9d97-cb891fd0b20e.PNG">
