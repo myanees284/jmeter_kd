@@ -1,6 +1,4 @@
-properties([parameters([string(defaultValue: '1', description: 'Number of users', name: 'UserCount', trim: true)])])
-properties([parameters([choice(choices: ['1', '5', '10'], description: 'Duration of test', name: 'duration')])])
-properties([parameters([choice(choices: ['LoginApp', 'CreateReservation', 'AddPNR'], description: 'Keyword to execute', name: 'kiword')])])
+properties([parameters([string(defaultValue: '1', description: 'Number of users', name: 'UserCount', trim: true), choice(choices: ['1', '5', '10'], description: 'Duration of test', name: 'duration'), choice(choices: ['LoginApp', 'CreateReservation', 'AddPNR'], description: 'Keyword to execute', name: 'Action')])])
 
 pipeline{
     agent any
@@ -16,7 +14,7 @@ pipeline{
 			dir('framework'){
 			echo '***Starting jmeter test'
 			//bat 'jmeter -n -t jmeter_testplan_jenkins.jmx -JuserCount=10 -Jrampup=2 -Jduration=60 -Jkeywordss=LoginApp;CreateReservation;AddPNR -l testlog.csv'
-			bat "jmeter -n -t jmeter_testplan_jenkins.jmx -JuserCount=${params.UserCount} -Jrampup=2 -Jduration=${params.duration} -Jkeywordss=${params.kiword} -l testlog.csv"
+			bat "jmeter -n -t jmeter_testplan_jenkins.jmx -JuserCount=${params.UserCount} -Jrampup=2 -Jduration=${params.duration} -Jkeywordss=${params.Action} -l testlog.csv"
 			echo '***jmeter test completed'
 			}
 		}
