@@ -1,5 +1,5 @@
-//properties([parameters([string(defaultValue: '1', description: 'Number of users', name: 'UserCount', trim: true)])])
-properties([parameters([choice(choices: ['1', '5', '10'], description: 'Number of users', name: 'usercount')])])
+properties([parameters([string(defaultValue: '1', description: 'Number of users', name: 'UserCount', trim: true)])])
+//properties([parameters([choice(choices: ['1', '5', '10'], description: 'Number of users', name: 'usercount')])])
 pipeline{
     agent any
     stages{
@@ -12,10 +12,9 @@ pipeline{
 		stage("Performance Test"){
 		steps{
 			dir('framework'){
-			//echo '***Starting jmeter test ${params.UserCount}'
-			echo "Pulling changes from the branch ${params.usercount}"
+			echo '***Starting jmeter test'
 			//bat 'jmeter -n -t jmeter_testplan_jenkins.jmx -JuserCount=10 -Jrampup=2 -Jduration=60 -Jkeywordss=LoginApp;CreateReservation;AddPNR -l testlog.csv'
-			bat "jmeter -n -t jmeter_testplan_jenkins.jmx -JuserCount=${params.usercount} -Jrampup=2 -Jduration=60 -Jkeywordss=LoginApp;CreateReservation;AddPNR -l testlog.csv"
+			bat "jmeter -n -t jmeter_testplan_jenkins.jmx -JuserCount=${params.UserCount} -Jrampup=2 -Jduration=60 -Jkeywordss=LoginApp;CreateReservation;AddPNR -l testlog.csv"
 			echo '***jmeter test completed'
 			}
 		}
