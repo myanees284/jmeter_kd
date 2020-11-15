@@ -1,3 +1,4 @@
+properties([parameters([string(defaultValue: '1', description: 'Number of users', name: 'UserCount', trim: true)])])
 pipeline{
     agent any
     stages{
