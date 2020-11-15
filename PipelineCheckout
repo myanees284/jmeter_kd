@@ -1,0 +1,5 @@
+ node {
+    stage('scm checkout'){
+        echo "pulling from branch ${params.SelectVersion}"
+     }
+    }
