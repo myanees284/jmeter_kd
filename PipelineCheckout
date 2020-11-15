@@ -4,8 +4,7 @@ pipeline{
         stage("Git Checkout"){
             steps{
                 echo '***checkout completed'
-                dir('framework') {
-                 }
+                dir('framework')
             }
         }
 		stage("Performance Test"){
