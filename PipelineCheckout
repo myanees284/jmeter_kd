@@ -1,10 +1,10 @@
 pipeline{
-agent any
-stages{
-stage('git checkout'){
-step{
-echo 'check out'
+    agent any
+    stages{
+        stage("Git Checkout"){
+            steps{
+                git credentialsId: 'github', url: 'https://github.com/javahometech/myweb'
+            }
+        }
+    }
 }
-}
-	}
-	}
