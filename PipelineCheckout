@@ -5,21 +5,19 @@ pipeline{
             steps{
                 echo '***checkout completed'
                 dir('framework') {
-                 echo '***Starting jmeter test'
-                 bat 'jmeter -n -t jmeter_testplan_jenkins.jmx -JuserCount=10 -Jrampup=2 -Jduration=60 -Jkeywordss=LoginApp;CreateReservation;AddPNR -l testlog.csv'
-                 echo '***jmeter test completed'
-                 perfReport filterRegex: '', sourceDataFiles: 'testlog.csv'
-              }
+                 }
             }
         }
-		stage("Sample Stage1"){
+		stage("Performance Test"){
 		steps{
-		 echo '***Sample Stage1'
+			echo '***Starting jmeter test'
+			bat 'jmeter -n -t jmeter_testplan_jenkins.jmx -JuserCount=10 -Jrampup=2 -Jduration=60 -Jkeywordss=LoginApp;CreateReservation;AddPNR -l testlog.csv'
+			echo '***jmeter test completed'
 		}
 		}
-			stage("Sample Stage2"){
+			stage("Publish Report"){
 		steps{
-		 echo '***Sample Stage2'
+		 perfReport filterRegex: '', sourceDataFiles: 'testlog.csv'
 		}
 		}
     }
