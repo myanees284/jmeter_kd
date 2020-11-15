@@ -15,5 +15,5 @@ This is a simple JMeter framework mainly constructed with:
         <img width="600" alt="grafana_trend" src="https://user-images.githubusercontent.com/44027805/98113058-8b055700-1ebc-11eb-88cc-90282f2251b9.PNG">
         
   This has been can be 
-  1) integrated with Jenkins and can be deployed into CI/CD pipeline.(see PipelineCheckout file)
+  1) integrated with Jenkins and deployed into CI/CD pipeline.(see PipelineCheckout file)
     <img width="609" alt="github_pipeline" src="https://user-images.githubusercontent.com/44027805/99195945-71102200-27a2-11eb-9d97-cb891fd0b20e.PNG">
