@@ -12,5 +12,15 @@ pipeline{
               }
             }
         }
+		stage("Sample Stage1"){
+		steps{
+		 echo '***Sample Stage1'
+		}
+		}
+			stage("Sample Stage2"){
+		steps{
+		 echo '***Sample Stage2'
+		}
+		}
     }
 }
