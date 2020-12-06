@@ -18,5 +18,5 @@ This is a simple JMeter framework mainly constructed with:
   1) integrated with Jenkins and can be deployed into CI/CD pipeline.(see PipelineCheckout file)
     <img width="609" alt="github_pipeline" src="https://user-images.githubusercontent.com/44027805/99195945-71102200-27a2-11eb-9d97-cb891fd0b20e.PNG">
   2) dockerized<br>
-    <B>docker build -t=myanees/jmeter_kd_test . </B>
+    <B>docker build -t=myanees/jmeter_kd_test . </B><br>
     <B>docker run -e userCount=10 -e rampupTime=5 -e testDuration=60 -e keywds=keyword1-keyword2-keyword3 -v {PWD}:/jmx/results myanees/jmeter_kd_test </B>
