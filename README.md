@@ -2,7 +2,7 @@
 
 This is a simple JMeter framework mainly constructed with:
   1) Keyword driven testing - the test suite is designed in such a way that it accept the scenario to execute as simple keyword.<br>
-      example: <B>jmeter -n -t jmeter_testplan_jenkins.jmx -JuserCount=10 -Jrampup=2 -Jduration=60 -Jkeywordss=keyword1;keyword2;keyword3 -l testlog.csv </B>
+      example: <B>jmeter -n -t jmeter_testplan_jenkins.jmx -JuserCount=10 -Jrampup=2 -Jduration=60 -Jkeywordss=keyword1-keyword2-keyword3 -l testlog.csv </B>
   2) Passing test parameters from multiple property files. (property file reader - check the PTE.properties containing the test environment details)
   3) Test Fragement - this is special holder of test request and executed them only when it is called from Threadgroup.
   4) Backendlistener - to log the performance stats and push them into influxdb(whose template is customized to store the data in much simpler format)
@@ -17,4 +17,6 @@ This is a simple JMeter framework mainly constructed with:
   This has been 
   1) integrated with Jenkins and can be deployed into CI/CD pipeline.(see PipelineCheckout file)
     <img width="609" alt="github_pipeline" src="https://user-images.githubusercontent.com/44027805/99195945-71102200-27a2-11eb-9d97-cb891fd0b20e.PNG">
-  2) dockerized (docker run -n
+  2) dockerized<br>
+    <B>docker build -t=myanees/jmeter_kd_test . </B>
+    <B>docker run -e userCount=10 -e rampupTime=5 -e testDuration=60 -e keywds=keyword1-keyword2-keyword3 -v {PWD}:/jmx/results myanees/jmeter_kd_test </B>
